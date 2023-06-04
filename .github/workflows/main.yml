@@ -30,7 +30,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
+    - run: npm install
     - run: npm install mocha -g
-    - run: npm install chai
-    - run: npm install chai-http
+    - run: npm install chai -g
+    - run: npm install chai-http -g
     - run: npm run test
