@@ -20,7 +20,33 @@ app.use(morgan("dev"));
 
 app.use("/api", product_routes);
 app.use("/api", order_routes);
-
+app.get("/", (req, res) => {
+  try {
+    res.send(`
+    <html>
+      <head>
+        <title>CAPSTONE PROJECT</title>
+        <style>
+          body {
+            background-color: black;
+            font-family: Arial, sans-serif;
+          }
+          h1 {
+            color: yellow;
+            text-align: center;
+            margin-top: 25rem;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>CAPSTONE PROJECT - SERVER RUNNING.</h1>
+      </body>
+    </html>
+  `);
+  } catch (err) {
+    return res.sendStatus(500);
+  }
+});
 app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
 
 database();
