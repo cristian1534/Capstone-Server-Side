@@ -3,8 +3,9 @@ name: Test
 
 on:
   pull_request:
-    branches: [ "main" ]
-
+    branches: [ "master" ]
+  push:
+    branches: [ "master" ]
 env:
   NODE_ENV: ${{ secrets.NODE_ENV }}
   MONGO_URI_DEV: ${{ secrets.MONGO_URI_DEV}}
@@ -29,5 +30,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci
-    - run: npm run build --if-present
-    - run: npm run test-ci
+    - run: npm run test
